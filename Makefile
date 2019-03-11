@@ -123,7 +123,7 @@ coverage-ci:
 
 .PHONY: coverage-ci-codecov
 coverage-ci-codecov:
-	bash <(curl -s https://codecov.io/bash)
+	wget -O - https://codecov.io/bash | bash
 
 
 # =========================================
