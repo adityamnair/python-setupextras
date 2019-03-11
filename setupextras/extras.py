@@ -8,7 +8,6 @@
 import os
 import glob
 import setuptools
-import mybad
 
 from os import path
 
@@ -34,7 +33,7 @@ EXCLUDE_FILE_PATHS_WITH_VALUES = [
 #       ERRORS
 # --------------------------------------
 
-class Error(mybad.Error):
+class Error(Exception):
     pass
 
 
