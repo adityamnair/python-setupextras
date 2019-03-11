@@ -5,13 +5,25 @@
 #       IMPORTS
 # --------------------------------------
 
-import rootpath
-
-rootpath.append()
-
 import os
+import sys
 import glob
 import setuptools
+
+CURRENT_PATH = os.path.abspath(os.path.dirname(__file__))
+ROOT_PATH = CURRENT_PATH
+
+try:
+    try:
+        sys.path.remove(CURRENT_PATH)
+    except:
+        pass
+
+    sys.path.index(ROOT_PATH)
+
+except ValueError:
+    sys.path.insert(0, ROOT_PATH)
+
 import setupextras
 
 # DISABLED/BUG: this line fails when `pip install setupextras` but works `pip install .`
