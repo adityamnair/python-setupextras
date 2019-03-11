@@ -29,7 +29,7 @@ class TestCase(helper.TestCase):
 
         result = setupextras.get_requirements()
 
-        self.assertEqual(result, [
+        self.assertDeepEqual(result, [
             'six >= 1.11.0',
             'rootpath >= 0.1.1',
             'mybad >= 0.1.3',
@@ -45,13 +45,13 @@ class TestCase(helper.TestCase):
 
         result = setupextras.get_requirements(foo_package_path)
 
-        self.assertEqual(result, [])
+        self.assertDeepEqual(result, [])
 
         foo_package_path = helper.fixture_path('foo')
 
         result = setupextras.get_requirements(foo_package_path)
 
-        self.assertEqual(result, [])
+        self.assertDeepEqual(result, [])
 
     def test_get_packages(self):
         self.assertTrue(hasattr(setupextras, 'get_packages'))
@@ -59,19 +59,19 @@ class TestCase(helper.TestCase):
 
         result = setupextras.get_packages()
 
-        self.assertEqual(result, ['setupextras', 'setupextras.tests'])
+        self.assertDeepEqual(result, ['setupextras', 'setupextras.tests'])
 
         foo_package_path = helper.fixture_path()
 
         result = setupextras.get_packages(foo_package_path)
 
-        self.assertEqual(result, [])
+        self.assertDeepEqual(result, [])
 
         foo_package_path = helper.fixture_path('foo')
 
         result = setupextras.get_packages(foo_package_path)
 
-        self.assertEqual(result, [])
+        self.assertDeepEqual(result, [])
 
     def test_get_data_files(self):
         self.assertTrue(hasattr(setupextras, 'get_data_files'))
@@ -79,13 +79,13 @@ class TestCase(helper.TestCase):
 
         result = setupextras.get_data_files()
 
-        self.assertEqual(result, [])
+        self.assertDeepEqual(result, [])
 
         foo_package_path = helper.fixture_path()
 
         result = setupextras.get_data_files()
 
-        self.assertEqual(result, [])
+        self.assertDeepEqual(result, [])
 
         foo_package_path = helper.fixture_path('foo')
 
@@ -109,7 +109,7 @@ class TestCase(helper.TestCase):
             ('<root>/examples', ['/']),
         ]))
 
-        self.assertEqual(result, expected_result)
+        self.assertDeepEqual(result, expected_result)
 
     def test_get_readme(self):
         self.assertTrue(hasattr(setupextras, 'get_readme'))
@@ -118,16 +118,16 @@ class TestCase(helper.TestCase):
         result = setupextras.get_readme()
 
         with open(path.join(helper.root_path(), 'README.md')) as readme:
-            self.assertEqual(result, readme.read())
+            self.assertDeepEqual(result, readme.read())
 
         foo_package_path = helper.fixture_path()
 
         result = setupextras.get_readme(foo_package_path)
 
-        self.assertEqual(result, None)
+        self.assertDeepEqual(result, None)
 
         foo_package_path = helper.fixture_path('py-foo')
 
         result = setupextras.get_readme(foo_package_path, silent = False)
 
-        self.assertEqual(result, '\n# foo\n\n*A foo library.*\n\n\n# Install\n\n```sh\npip install foo\n```\n\n# License\n\nReleased under the MIT license.\n')
+        self.assertDeepEqual(result, '\n# foo\n\n*A foo library.*\n\n\n# Install\n\n```sh\npip install foo\n```\n\n# License\n\nReleased under the MIT license.\n')
