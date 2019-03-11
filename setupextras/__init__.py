@@ -7,8 +7,15 @@ import rootpath
 
 rootpath.append()
 
-import sys
+# import syss
+# print('sys.path', sys.path, rootpath.detect())
 
-print('sys.path', sys.path)
+from setupextras.extras import *
 
-from setupextras.setupextras import *
+# import setupextras
+# import setupextras.extras as setupextras
+
+# get_requirements = setupextras.get_requirements
+# get_packages = setupextras.get_packages
+# get_data_files = setupextras.get_data_files
+# get_readme = setupextras.get_readme
