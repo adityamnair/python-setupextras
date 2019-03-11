@@ -1,5 +1,6 @@
 six >= 1.11.0
 rootpath >= 0.1.1
+inspecta >= 0.1.0
 setuptools >= 40.8.0
 
 colour-runner >= 0.0.5
