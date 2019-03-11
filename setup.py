@@ -23,7 +23,7 @@ import setupextras
 # --------------------------------------
 
 name = 'setupextras'
-version = '0.1.2'
+version = '0.1.3'
 description = 'Additional common `setuptools` helpers - for Python.'
 keywords = [
     'setup',
