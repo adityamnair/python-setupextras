@@ -32,7 +32,7 @@ class TestCase(helper.TestCase):
         self.assertDeepEqual(result, [
             'six >= 1.11.0',
             'rootpath >= 0.1.1',
-            'mybad >= 0.1.3',
+            'inspecta >= 0.1.0',
             'setuptools >= 40.8.0',
             'colour-runner >= 0.0.5',
             'deepdiff >= 3.3.0',

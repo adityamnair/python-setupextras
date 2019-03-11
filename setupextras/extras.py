@@ -19,13 +19,21 @@ from os import path
 README_IDENTIFIER = 'README'
 DEFAULT_REQUIREMENTS = 'requirements.txt'
 DEFAULT_SILENT = True
-EXCLUDE_FILE_PATHS_WITH_VALUES = [
-    '__pycache__',
-    '.pyc',
+
+# FIXME: use glob patterns instead
+EXCLUDE_FILE_PATHS_WITH_PREFIX = [
     '.git',
     '.tox',
     '.eggs',
+    'build',
+    'dist',
+]
+EXCLUDE_FILE_PATHS_WITH_CONTENT = [
+    '__pycache__',
     '.egg-info',
+]
+EXCLUDE_FILE_PATHS_WITH_SUFFIX = [
+    '.pyc',
 ]
 
 
@@ -95,6 +103,9 @@ def get_data_files(
     data_file_patterns = [],
     root_path = None,
     silent = None,
+    exlude_prefix = None,
+    exlude_content = None,
+    exlude_suffix = None,
 ):
     if silent != False:
         silent = bool(silent) or DEFAULT_SILENT
@@ -113,8 +124,16 @@ def get_data_files(
             files = []
 
             should_be_excluded = any(map(lambda exclude_value: (
+                data_file_dir and data_file_dir.startswith(path.join(root_path, exclude_value))
+            ), exlude_prefix or EXCLUDE_FILE_PATHS_WITH_PREFIX))
+
+            should_be_excluded = should_be_excluded or any(map(lambda exclude_value: (
                 exclude_value in data_file_dir
-            ), EXCLUDE_FILE_PATHS_WITH_VALUES))
+            ), exlude_content or EXCLUDE_FILE_PATHS_WITH_CONTENT))
+
+            should_be_excluded = should_be_excluded or any(map(lambda exclude_value: (
+                data_file_dir and data_file_dir.endswith(exclude_value)
+            ), exlude_suffix or EXCLUDE_FILE_PATHS_WITH_SUFFIX))
 
             if not should_be_excluded:
                 for data_file_pattern in data_file_patterns:
