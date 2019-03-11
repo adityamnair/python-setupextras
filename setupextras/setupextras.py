@@ -23,6 +23,7 @@ DEFAULT_SILENT = True
 EXCLUDE_FILE_PATHS_WITH_VALUES = [
     '__pycache__',
     '.pyc',
+    '.git',
 ]
 
 

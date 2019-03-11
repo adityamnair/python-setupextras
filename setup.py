@@ -14,27 +14,32 @@ import glob
 import setuptools
 import setupextras
 
-# DISABLED/BUG: this line fails when `pip install inspecta` but works `pip install .`
-# from inspecta import __version__
+# DISABLED/BUG: this line fails when `pip install setupextras` but works `pip install .`
+# from setupextras import __version__
 
 
 # =========================================
 #       MAIN
 # --------------------------------------
 
-name = 'inspecta'
-version = '0.1.3'
-description = 'A colorized object pretty printer - for Python.'
+name = 'setupextras'
+version = '0.1.0'
+description = 'Additional common `setuptools` helpers - for Python.'
 keywords = [
-    'inspector',
-    'inspection',
-    'color',
-    'colors',
-    'syntax-highlighting',
-    'prettyprinter',
-    'pretty-printer',
-    'debugging',
-    'terminal',
+    'setup',
+    'setuptools',
+    'extras',
+    'helpers',
+    'tools',
+    'package',
+    'utils',
+    'config',
+    'packages',
+    'data-files',
+    'requirements',
+    'readme',
+    'pip',
+    'pypi',
 ]
 
 packages = setupextras.get_packages()
